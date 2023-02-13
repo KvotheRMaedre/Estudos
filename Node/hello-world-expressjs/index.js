@@ -2,7 +2,8 @@ const express = require('express');
 const app = express();
 
 app.get('/', (req,res) => {
-    res.send('Oi, meus lindos')
+    let resposta = {mensagem: 'Oi, meus lindos'}
+    res.json(resposta);
 });
 
 app.listen(8080, () => {
