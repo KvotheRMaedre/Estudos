@@ -1,0 +1,1 @@
+console.log('Corrent user is:', process.env.user);
