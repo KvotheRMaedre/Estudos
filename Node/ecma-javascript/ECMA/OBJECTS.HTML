@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>JavaScript ES8</h2>
+    <h4>OBJECT.VALUES / OBJECT.ENTRIES</h4>
+
+    <p id="objects"> This function is used to extract values or value pairs similar to Objects.key. <br>
+        <br> Object.values returns an array of enumerable property values of objects. And we can iterate over it using the good old Array.prototype.forEach combined with arrow functions of the implicit return ES6:
+        // Object literal <br>
+        let obj = { a: 1, b: 2, c: 3 };<br>
+        Object.values(obj).forEach(val => console.log(val)); // 1, 2, 3 <br>
+        <br>
+        Object.entries, on the other hand, will return an array of object enumerable property key-values (such as an array). Each item in the resulting array will also be an array.
+        <br>// Object literal <br>
+        let obj = { a: 1, b: 2, c: 3 }; <br>
+        JSON.stringify(Object.entries(obj)); // '[["a",1],["b",2],["c",3]]' <br>
+        <br>
+        // String <br>
+        Object.entries("JS"); // [ [ '0', 'J' ], [ '1', 'S' ] ] <br>
+    </p>
+</body>
+</html>

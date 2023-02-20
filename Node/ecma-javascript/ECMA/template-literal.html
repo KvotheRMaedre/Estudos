@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Literal Template for Html Fragments</title>
+</head>
+<body>
+    
+</body>
+<script>
+    const article = {
+        title: "Template Strings",
+        intro: "Template String - How use ECMA6 Literal templates for Html Fragements!",
+        body: "Some texts ....",
+        tags: ['es6', 'js', 'template-literal']
+    }
+
+    const markup = `
+        <article>
+            <header>
+                <h1>${article.title}</h1>
+            </header>
+            <section>
+                <p>${article.intro}</p>
+            </section>
+            <footer>
+            <ul>
+                ${article.tags.map((tag) => `<li>${tag}</li>`).join('')}
+            </ul>
+            </footer>
+        </article>
+    `
+
+    document.body.innerHTML = markup
+</script>
+</html>
