@@ -1,5 +1,8 @@
 ﻿using AprendendoDotNetTwitterInspired.Data;
 using AprendendoDotNetTwitterInspired.Models;
+using AprendendoDotNetTwitterInspired.Validation;
+using FluentValidation;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
@@ -44,9 +47,22 @@ namespace AprendendoDotNetTwitterInspired.Controllers
         [Route("postTweet")]
         public IActionResult PostTweet(int authorId, string text)
         {
-            Tweet? tweet = new Tweet { authorId = authorId, dateCreation = DateTime.Now, dateEdited = DateTime.Now, id = 5, likes = 0, text = text };
-            TweetStore.tweets.Add(tweet);
-            return Ok(tweet);
+            TweetValidation validator = new TweetValidation();
+            Tweet tweet = new Tweet { authorId = authorId, dateCreation = DateTime.Now, dateEdited = DateTime.Now, id = 5, likes = 0, text = text };
+            ValidationResult result = validator.Validate(tweet);
+
+            if (result.IsValid)
+            {
+                TweetStore.tweets.Add(tweet);
+                return Ok(tweet);
+            }
+            else
+            {
+                string errors = "The following erros occurred: {\n";
+                result.Errors.ToList().ForEach(error =>  errors += $"\t{error.PropertyName} : {error.ErrorMessage},\n" );
+                errors += "}";
+                return BadRequest(errors);
+            }
         }
 
         [HttpPut]
