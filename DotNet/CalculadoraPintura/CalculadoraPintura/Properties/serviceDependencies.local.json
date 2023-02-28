@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "storage1": {
+      "secretStore": null,
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.Storage/storageAccounts/calculadorapinturastorag",
+      "type": "storage.azure",
+      "connectionId": "password",
+      "dynamicId": null
+    }
+  }
+}
